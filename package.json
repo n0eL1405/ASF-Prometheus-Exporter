@@ -1,6 +1,6 @@
 {
   "name": "asf-prometheus-exporter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Prometheus Exporter using ASF API",
   "main": "index.js",
   "author": "n0eL_1405",

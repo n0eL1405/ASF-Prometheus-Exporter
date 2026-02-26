@@ -6,6 +6,6 @@ asf:
 prometheus:
   prefix: "ASF_PROM_EXP" # prefix for Prometheus metrics
 uptimekuma:
-  url: "" # OPTIONAL: leave empty to not use
+  ip: "" # OPTIONAL: leave empty to not use
   port: 3001 # OPTIONAL: Only needed when setting Uptime Kuma URL. Uptime Kuma default port = 3001
   hearthbeat: 60 # OPTIONAL: Heartbeat interval in seconds
