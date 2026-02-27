@@ -14,12 +14,29 @@ if (config.uptimekuma.using) {
   setInterval(hearthbeat, interval * 1000);
 }
 
+// load common ASF information
+let asfInfo;
+const loadCommonAsfInfo = async() => {
+  asfInfo = await (await callASF('ASF')).json();
+}
+loadCommonAsfInfo();
+setTimeout(loadCommonAsfInfo, 600000);
+
 // create Prometheus metrics
-const promPrefix = config.prometheus.prefix !== undefined ? config.prometheus.prefix.toUpperCase() + '_' : '';
-prom.collectDefaultMetrics({prefix: promPrefix})
+const promPrefix = config.prometheus.prefix !== undefined ? config.prometheus.prefix.toLowerCase() + '_' : '';
+prom.collectDefaultMetrics({prefix: `${promPrefix}default_`})
 
 new prom.Gauge({
-  name: `${promPrefix}TOTAL_NUMBER_OF_BOTS`,
+  name: `${promPrefix}build_info`,
+  help: 'Build information about ASF in form of label values',
+  labelNames: ['variant', 'version'],
+  collect() {
+    this.labels({ variant: asfInfo.Result.BuildVariant, version: asfInfo.Result.Version }).set(1);
+  }
+});
+
+new prom.Gauge({
+  name: `${promPrefix}total_number_of_bots`,
   help: 'Total number of bots on ASF instance',
   async collect() {
     try {
@@ -36,8 +53,8 @@ new prom.Gauge({
 });
 
 new prom.Gauge({
-  name: `${promPrefix}GAMES_REMAINING_TO_FARM`,
-  help: 'Total number of games remaining to farm',
+  name: `${promPrefix}games_remaining_to_farm`,
+  help: 'Total number of remaining games to farm',
   async collect() {
     try {
       const response = await callASF('Bot/ASF');
@@ -60,7 +77,7 @@ new prom.Gauge({
 });
 
 new prom.Gauge({
-  name: `${promPrefix}CARDS_REMAINING_TO_FARM`,
+  name: `${promPrefix}cards_remaining_to_farm`,
   help: 'Total number of cards remaining to farm',
   async collect() {
     try {
@@ -86,7 +103,7 @@ new prom.Gauge({
 });
 
 new prom.Gauge({
-  name: `${promPrefix}BOTS_CURRENTLY_FARMING`,
+  name: `${promPrefix}bots_currently_farming`,
   help: 'Total number of bots currently farming',
   async collect() {
     try {

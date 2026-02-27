@@ -34,10 +34,10 @@ Set all the properties you need.
 | Property            | Description                                                                                                                                                                                                  | Optional |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 | `app.port`          | Port the exporter will use to expose the Prometheus metrics to.                                                                                                                                              | ❌        |
-| `asf.ip`            | IP of the server ASF is running on. If the exporter and ASF are running on the same mashine, leave it to `localhost`.                                                                                        | ❌        |
+| `asf.ip`            | IP of the server ASF is running on. If the exporter and ASF are running on the same mashine, leave it to `127.0.0.1`.                                                                                        | ❌        |
 | `asf.port`          | Port ASF is running on. If not sure and/or nothing is changes, leave it to default `1242`. If it's not working, see [ASF Wiki](https://github.com/JustArchiNET/ArchiSteamFarm/wiki/Setting-up#using-asf-ui). | ❌        |
 | `prometheus.prefix` | Prefix for the Prmetheus metrics. Not required but highly recommended, see [Prometheus docs](https://prometheus.io/docs/practices/naming/).                                                                  | ✅        |
-| `uptimekuma.ip`     | IP of the server Uptime Kuma is running on. If the exporter and Uptime Kuma are running on the same mashine, use `localhost`. [More information on Uptime Kuma](#uptime-kuma).                               | ✅        |
+| `uptimekuma.ip`     | IP of the server Uptime Kuma is running on. If the exporter and Uptime Kuma are running on the same mashine, use `127.0.0.1`. [More information on Uptime Kuma](#uptime-kuma).                               | ✅        |
 | `uptimekuma.port`   | Port Uptime Kuma is running on. If not sure and/or nothing is changes, leave it to default `3001`. [More information on Uptime Kuma](#uptime-kuma).                                                          | ✅        |
 
 ## 3. Start
@@ -64,9 +64,24 @@ If you just downloaded the files, you have to copy and overwrite the files, inst
 
 # Current metrics
 
-TODO
-
 See [Prom-CLient](https://github.com/siimon/prom-client) and [ASF API](https://github.com/JustArchiNET/ArchiSteamFarm/wiki/IPC#asf-api) for references to implement your own metrics.
+Except the first metrics, every other metric will fetch the information from the ASF API when called.
+The data for `build_info` will be fetched on startup every 10 minutes.
+
+### `build_info`
+Gives the build variant and version of ASF as label values. See [ASF Wiki](https://github.com/JustArchiNET/ArchiSteamFarm/wiki/MonitoringPlugin#enabling-the-plugin).
+
+### `total_numbers_of_bots`
+Total number of bots on the ASF instance.
+
+### `games_remaining_to_farm`
+Total number of remaining games to farm.
+
+### `cards_remaining_to_farm`
+Total number of cards remaining to farm.
+
+### `bots_currently_farming`
+Total number of bots currently farming.
 
 # Uptime Kuma
 I recommend using [Uptime Kuma](https://github.com/louislam/uptime-kuma) to monitor the status of the application.  
