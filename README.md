@@ -7,9 +7,9 @@ The official [ASF MonitoringPlugin](https://github.com/JustArchiNET/ArchiSteamFa
 # Requirements
 I won't explain how to install and setup anything of the required software. If you don't already have the software, use Google.
 - [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm) - Duh...
-- [Prometheus](https://prometheus.io/) - This is *not* a Prometheus tutorial, so I won't go into any details on how to use it.
+- [Prometheus](https://prometheus.io/) - This is *not* a Prometheus tutorial, so I won't go into any details on how to use it. Basic understanding of what Prometheus is and how to use it is required.
 - [PM2](https://pm2.keymetrics.io/) - PM2 will keep the application running and restart it if it crashes. It is similar to Docker and has its own metrics (if you want to look into these). Maybe in the future I will replace it with a proper Docker container.
-- [Node.js](https://nodejs.org/en/) - I recommend using the latest LTS version.
+- [Node.js](https://nodejs.org/en/) - Tested with version `23.11.1`. I recommend using the latest LTS version.
 
 # Getting Started
 
@@ -61,6 +61,12 @@ Have fun with your ASF metrics!
 Updating depends on the selected method to get the app:  
 If you used git, you can simply run `npm run update` to pull the latest changes from the repository, install the dependencies and restart the app. There could be some user input required, follow the instructions or use Google if it's Git-related.  
 If you just downloaded the files, you have to copy and overwrite the files, install the dependencies and restart the app manually. Be careful to not overwrite `config.yaml` and `.env`, otherwise you could potentially lose your configuration.
+
+# Current metrics
+
+TODO
+
+See [Prom-CLient](https://github.com/siimon/prom-client) and [ASF API](https://github.com/JustArchiNET/ArchiSteamFarm/wiki/IPC#asf-api) for references to implement your own metrics.
 
 # Uptime Kuma
 I recommend using [Uptime Kuma](https://github.com/louislam/uptime-kuma) to monitor the status of the application.  
