@@ -92,3 +92,8 @@ To use Uptime Kuma, create a new Push-Monitor and get the marked Parts from the 
 The first and second part are the IP and port of Uptime Kuma.  
 The third part is the key of the monitor. You set in the `.env`.  
 Let everything else as is and you're done! For more information on what to do with Uptime Kuma, see [Uptime Kuma docs](https://github.com/louislam/uptime-kuma/wiki/).
+
+# Future development / planned features
+- [ ] Use a proper Docker container instead of PM2
+- [ ] Add (nearly) all metrics from the official ASF MonitoringPlugin
+- [ ] Implement caching of data from API (e.g. making `Bots/ASF` every 15 seconds and only return the latest fetched data when function is called)
