@@ -96,4 +96,4 @@ Let everything else as is and you're done! For more information on what to do wi
 # Future development / planned features
 - [ ] Use a proper Docker container instead of PM2
 - [ ] Add (nearly) all metrics from the official ASF MonitoringPlugin
-- [ ] Implement caching of data from API (e.g. making `Bots/ASF` every 15 seconds and only return the latest fetched data when function is called)
+- [ ] Implement caching of data from API (e.g. making `Bots/ASF` API call every 15 seconds and only return the latest fetched data when function is called)
