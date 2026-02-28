@@ -1,11 +1,11 @@
 app:
-  port: 6789 # port the app will expose the metrics to
+  port: 6789 # Port the app will expose the metrics to
 asf:
-  ip: "127.0.0.1" # leave '127.0.0.1' when running on same maschine as ASF, otherwise change to ip of the server hosting ASF
+  ip: "198.178.162.XXX" # IP of the server hosting ASF
   port: 1242 # ASF default port
 prometheus:
-  prefix: "asf" # prefix_for_prometheus_metrics
+  prefix: "asf" # Prefix for Prometheus metrics
 uptimekuma:
-  ip: "" # OPTIONAL: leave empty to not use
+  ip: "" # OPTIONAL: Leave empty to not use Uptime Kuma
   port: 3001 # OPTIONAL: Only needed when setting Uptime Kuma URL. Uptime Kuma default port = 3001
   hearthbeat: 60 # OPTIONAL: Heartbeat interval in seconds
