@@ -64,9 +64,9 @@ If you just downloaded the files, you have to copy and overwrite the files, inst
 
 # Current metrics
 
-See [Prom-CLient](https://github.com/siimon/prom-client) and [ASF API](https://github.com/JustArchiNET/ArchiSteamFarm/wiki/IPC#asf-api) for references to implement your own metrics.
-Except the first metrics, every other metric will fetch the information from the ASF API when called.
-The data for `build_info` will be fetched on startup every 10 minutes.
+See [Prom-CLient](https://github.com/siimon/prom-client) and [ASF API](https://github.com/JustArchiNET/ArchiSteamFarm/wiki/IPC#asf-api) for references to implement your own metrics.  
+Except the first metric, every other metric will fetch the information from the ASF API when called.
+The data for `build_info` will be fetched on startup and updates every 10 minutes.
 
 ### `build_info`
 Gives the build variant and version of ASF as label values. See [ASF Wiki](https://github.com/JustArchiNET/ArchiSteamFarm/wiki/MonitoringPlugin#enabling-the-plugin).
